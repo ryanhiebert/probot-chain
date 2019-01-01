@@ -1,5 +1,5 @@
-module.exports = (robot) => {
-  robot.on('pull_request.closed', async context => {
+module.exports = app => {
+  app.on('pull_request.closed', async context => {
     const {github, payload} = context
     const self = payload.pull_request
 
@@ -12,24 +12,11 @@ module.exports = (robot) => {
 
     // Get all open pull requests with a base matching this head
     github.paginate(
-      github.pullRequests.getAll({owner, repo, base: head, state, per_page}),
+      github.pulls.list({owner, repo, base: head, state, per_page}),
       async page => {
-        for (const {number, body} of page.data) {
-          // Find all pull requests this one extends.
-          // Should be only one in the usual case,
-          // but handle exceptions gracefully.
-          const regex = /extend(?:s|ed)? +#(\d+)/ig
-          const extend = []
-          let match
-          while ((match = regex.exec(body)) !== null) {
-            extend.push(Number(match[1]))
-          }
-          
-          // Check if the original PR is extended by this PR
-          if (extend.includes(self.number)) {
-              // Change the base to match where the original PR was merged.
-              github.pullRequests.update({owner, repo, number, base})
-          }
+        for (const {number} of page.data) {
+          // CHange the base to match where the original PR was merged.
+          github.pulls.update({owner, repo, number, base})
         }
       }
     )
