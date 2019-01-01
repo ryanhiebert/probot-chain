@@ -3,6 +3,10 @@ module.exports = app => {
     const {github, payload} = context
     const self = payload.pull_request
 
+    if (self.base.repo.default_branch === self.head.ref) {
+      return // Skip if the the head is the default branch
+    }
+
     const owner = payload.repository.owner.login
     const repo = payload.repository.name
     const head = self.head.ref
@@ -15,7 +19,7 @@ module.exports = app => {
       github.pullRequests.list({owner, repo, base: head, state, per_page}),
       async page => {
         for (const {number} of page.data) {
-          // CHange the base to match where the original PR was merged.
+          // Change the base to match where the original PR was merged.
           github.pullRequests.update({owner, repo, number, base})
         }
       }
