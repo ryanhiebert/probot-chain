@@ -16,12 +16,11 @@ module.exports = (app) => {
 
     // Get all open pull requests with a base matching this head
     await github.paginate(
-      github.pulls.list,
-      {owner, repo, base: head, state, per_page},
+      github.pullRequests.list({owner, repo, base: head, state, per_page}),
       async (page) => {
         for (const {number} of page.data) {
           // Change the base to match where the original PR was merged.
-          github.pulls.update({owner, repo, number, base})
+          github.pullRequests.update({owner, repo, number, base})
         }
       }
     )

@@ -10,7 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "probot": "^9.11.3"
+    "probot": "^7.4.0"
   },
   "devDependencies": {
     "jest": "^26.0.1",
