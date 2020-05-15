@@ -26,8 +26,8 @@ module.exports = (app) => {
     )
 
     // Delete the branch if the repository deletes branches on merge.
-    const repo = await github.repos.get({owner, repo})
-    if (repo.delete_branch_on_merge) {
+    const repoInfo = await github.repos.get({owner, repo})
+    if (repoInfo.delete_branch_on_merge) {
       await github.git.deleteReference({owner, repo, ref: head})
     }
   })
