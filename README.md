@@ -1,10 +1,3 @@
-# probot-chain
-
-![Chain Logo](logo.png)
-
-> a GitHub App built with [probot](https://github.com/probot/probot) that
-> makes it easy to manage chained pull requests.
-
 ## Note: You probably don't need this
 
 GitHub will automatically change the base of pull requests that currently
@@ -13,17 +6,27 @@ automatically on merge or via the button on the pull request.
 
 So if you merge a pull request, and then you click the "Delete branch" button:
 
-![Delete branch button](delete-branch.png)
+![Delete branch button](obsolete-proof/delete-branch.png)
 
 Then you'll see this on all the dependent pull requests:
 
-![Base automatically changed activity](base-changed.png)
+![Base automatically changed activity](obsolete-proof/base-changed.png)
 
 And this also works if you have GitHub delete branches automatically on merge:
 
-![Automatically delete head branches checkbox in settings](auto-delete-on-merge.png)
+![Automatically delete head branches checkbox in settings](obsolete-proof/auto-delete-on-merge.png)
 
 So you probably don't need this. If you think you actually do need this, open up an issue and tell me. I'll probably delete this app in a while if you don't.
+
+One particular case that might catch you up is that if you delete the branch via the git cli, it will NOT change the base branch of dependent pull requests, it will just close the issues. I expect that for most cases, though, having it head branches delete automatically, potentially combined with branch protection rules, will be the best way to deal with those cases.
+
+# probot-chain
+
+![Chain Logo](logo.png)
+
+> a GitHub App built with [probot](https://github.com/probot/probot) that
+> makes it easy to manage chained pull requests.
+
 
 ## Usage
 
