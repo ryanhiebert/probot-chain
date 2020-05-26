@@ -18,7 +18,7 @@ And this also works if you have GitHub delete branches automatically on merge:
 
 So you probably don't need this. If you think you actually do need this, open up an issue and tell me. I'll probably delete this app in a while if you don't.
 
-One particular case that might catch you up is that if you delete the branch via the git cli, it will NOT change the base branch of dependent pull requests, it will just close the issues. I expect that for most cases, though, having it head branches delete automatically, potentially combined with branch protection rules, will be the best way to deal with those cases.
+**One particular case that might catch you up** is that if you delete the branch via the **git cli**, it will NOT change the base branch of dependent pull requests, it will just close the issues. I expect that for most cases, though, having it delete head branches automatically, potentially combined with branch protection rules, will be the best way to deal with those cases.
 
 # probot-chain
 
