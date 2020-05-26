@@ -1,4 +1,4 @@
-## Note: You probably don't need this
+# Note: You probably don't need this
 
 GitHub will automatically change the base of pull requests that currently
 have their head set to the branch being deleted if the deleting is done
