@@ -1,5 +1,7 @@
 # Note: You probably don't need this
 
+UPDATE: I have turned off the server. If you actually do need this, please let me know by opening an issue. I'm going to archive this repository in a couple of weeks.
+
 GitHub will automatically change the base of pull requests that currently
 have their head set to the branch being deleted if the deleting is done
 automatically on merge or via the button on the pull request.
